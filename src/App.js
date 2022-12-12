@@ -1,17 +1,16 @@
-import {Navigation} from './navigation/Navigation'
-import {BrowserRouter} from 'react-router-dom'
-import translate from "./services/translate/TranslateService";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Navigation } from './navigation/Navigation';
+import translate from './services/translate/TranslateService';
 
-function App() {
-
-  translate.init()
-
+const App = () => {
+  translate.init();
 
   return (
     <BrowserRouter>
-      <Navigation/>
+      <Navigation />
     </BrowserRouter>
   );
-}
+};
 
 export default App;
