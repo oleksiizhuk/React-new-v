@@ -1,11 +1,13 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useHomeData } from './hook/useHomeData';
+import { HomeTemplate } from '../../component/Template/Home/HomeTemplate';
+import { SuspenseView } from '../../component/SuspenseView/SuspenseView';
 
 export const HomePage = () => {
-  const { t } = useTranslation();
+  const { isLoading, people } = useHomeData();
   return (
-    <div>
-      <p>{t('helloWorld')}</p>
-    </div>
+    <SuspenseView isLoading={isLoading}>
+      <HomeTemplate people={people} />
+    </SuspenseView>
   );
 };
