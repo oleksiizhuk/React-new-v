@@ -8,6 +8,7 @@
     "plugins": ["jest"],
     "extends": "airbnb",
     "rules": {
+        "linebreak-style": ["error", "windows"],
         "react/function-component-definition": [
             2,
             {

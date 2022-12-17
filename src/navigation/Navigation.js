@@ -1,31 +1,24 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-import { Link } from 'react-router-dom';
 import { HomePage } from '../pages/homePage/HomePage';
 import { AboutPage } from '../pages/aboutPage/AboutPage';
 import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
-import translate from '../services/translate/TranslateService';
+import { Translate } from '../component/Template/Translate/Translate';
+import { PeoplePage } from '../pages/peoplePage/PeoplePage';
+import { StarshipPage } from '../pages/starshipPage/StarshipPage';
+import { PlanetPage } from '../pages/planetPage/PlanetPage';
 
 export const Navigation = () => {
   return (
-    <>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="about">About Us</Link>
-
-        <button type="button" onClick={() => translate.changeLanguage('en')}>
-          <p>change language en</p>
-        </button>
-
-        <button type="button" onClick={() => translate.changeLanguage('pl')}>
-          <p>change language pl</p>
-        </button>
-      </div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </>
+    
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/translate" element={<Translate />} />
+      <Route path="/people" element={<PeoplePage />} />
+      <Route path="/starships" element={<StarshipPage />} />
+      <Route path="/planets" element={<PlanetPage />} />
+    </Routes>
   );
 };
