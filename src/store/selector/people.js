@@ -13,3 +13,5 @@ export const selectPeoples = createSelector(
   selectPeople,
   ({ people }) => people
 );
+
+export const selectPeopleError = createSelector(selectPeople, ({ isError }) => isError);

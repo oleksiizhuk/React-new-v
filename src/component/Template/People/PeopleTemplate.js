@@ -8,11 +8,8 @@ export const PeopleTemplate = ({ peoples }) => {
       {/* eslint-disable-next-line react/prop-types */}
       {peoples ? peoples.map((item) => {
         return (
-          <li className="list-group-item list-group-flush">
-            {'NAME: '}
-            {item.name} 
-            {' GENDER: '}
-            {item.gender}
+          <li key={item.name} className="list-group-item list-group-flush">
+            {item.name}
           </li>
         );
       }) : null}

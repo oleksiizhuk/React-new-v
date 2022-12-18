@@ -1,9 +1,11 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setPeople, updateIsLoadingPeople } from '../actions-types/people';
+// eslint-disable-next-line import/named
+import { setPeople, setPeopleError, updateIsLoadingPeople, } from '../actions-types/people';
 
 const initialState = {
   isLoading: false,
   people: null,
+  isError: false,
 };
 
 export const people = createReducer(initialState, (builder) => {
@@ -18,6 +20,15 @@ export const people = createReducer(initialState, (builder) => {
     return {
       ...state,
       people: payload,
+      isError: false,
+      isLoading: false
+    };
+  });
+  
+  builder.addCase(setPeopleError, (state, { payload }) => {
+    return {
+      ...state,
+      isError: payload,
     };
   });
 });
