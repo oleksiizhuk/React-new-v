@@ -1,9 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setPlanets, updateIsLoadingPlanets } from '../actions-types/planets';
+import { setPlanets, updateIsLoadingPlanets, setPlanetError } from '../actions-types/planets';
 
 const initialState = {
   isLoading: false,
   planets: null,
+  isError: false,
 };
 
 export const planets = createReducer(initialState, (builder) => {
@@ -18,6 +19,14 @@ export const planets = createReducer(initialState, (builder) => {
     return {
       ...state,
       planets: payload,
+      isError: false,
+      isLoading: false,
+    };
+  });
+  builder.addCase(setPlanetError, (state, { payload }) => {
+    return {
+      ...state,
+      isError: payload,
     };
   });
 });

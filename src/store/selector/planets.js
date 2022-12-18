@@ -11,5 +11,10 @@ export const selectLoading = createSelector(
 );
 export const selectPlanets = createSelector(
   selectPlanet,
-  ({ starships }) => starships
+  ({ planets }) => planets
+);
+
+export const selectPlanetError = createSelector(
+  selectPlanet,
+  ({ isError }) => isError    
 );

@@ -6,8 +6,12 @@
         "jest/globals": true
     },
     "plugins": ["jest"],
-    "extends": "airbnb",
+    "extends": [
+        "airbnb",
+        "plugin:react-hooks/recommended"
+    ],
     "rules": {
+        "react-hooks/exhaustive-deps": "error",
         "linebreak-style": ["error", "windows"],
         "react/function-component-definition": [
             2,

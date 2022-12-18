@@ -1,4 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const updateIsLoadingPlanets = createAction('UPDATE_IS_LOADING_PLANET');
-export const setPlanets = createAction('SET_PLANET');
+const updateIsLoadingPlanets = createAction('UPDATE_IS_LOADING_PLANET');
+const setPlanets = createAction('SET_PLANET');
+const setPlanetError = createAction('SET_PLANET_ERROR');
+
+export {
+  updateIsLoadingPlanets,
+  setPlanets,
+  setPlanetError
+};

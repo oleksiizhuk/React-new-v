@@ -5,7 +5,6 @@ export const fetchUsers = () => async (dispatch) => {
     dispatch(updateIsLoading(true));
     const response = await fetch('https://swapi.dev/api/people');
     const data = await response.json();
-    console.log('result = ', data);
 
     dispatch(setPeopleList(data.results));
     dispatch(updateIsLoading(false));

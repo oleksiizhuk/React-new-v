@@ -2,7 +2,6 @@ import React from 'react';
 
 // eslint-disable-next-line react/prop-types
 export const PeopleTemplate = ({ peoples }) => {
-  console.log('BOT 4TO', peoples);
   return (
     <div className="container">
       <ul className="list-group" />

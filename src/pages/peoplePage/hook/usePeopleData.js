@@ -7,7 +7,7 @@ export const usePeopleData = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPeople());
-  }, []);
+  }, [dispatch]);
   
   const peoples = useSelector(selectPeoples);
   return { peoples };

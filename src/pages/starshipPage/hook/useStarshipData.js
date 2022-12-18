@@ -7,7 +7,7 @@ export const useStarshipData = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchStarship());
-  }, []);
+  }, [dispatch]);
 
   const starships = useSelector(selectStarships);
   return { starships };

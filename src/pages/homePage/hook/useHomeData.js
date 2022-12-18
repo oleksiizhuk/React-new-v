@@ -11,9 +11,8 @@ export const useHomeData = () => {
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, []);
+  }, [dispatch]);
 
-  console.log('isLoading = ', isLoading);
   return {
     isLoading,
     people,

@@ -4,7 +4,7 @@ import './header.scss';
 
 export const Header = () => {
   return (
-    <div className="jumbotron">
+    <div>
       <ul className="b-flex">
         <li className="custom-li">
           <Link to="/people">People</Link>

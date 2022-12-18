@@ -1,11 +1,16 @@
 import React from 'react';
 import { usePlanetData } from './hook/usePlanetData';
 import { PlanetTemplate } from '../../component/Template/Planet/PlanetTemplate';
+import { SuspenseView } from '../../component/SuspenseView/SuspenseView';
 
 export const PlanetPage = () => {
-  const { planets } = usePlanetData();
+  const {
+    isLoading, planets, isError, loadPlanet
+  } = usePlanetData();
 
   return (
-    <PlanetTemplate planets={[planets]} />
+    <SuspenseView isLoading={isLoading} isError={isError} onTryAgainClick={loadPlanet}>
+      <PlanetTemplate planets={planets} />
+    </SuspenseView>
   );
 };

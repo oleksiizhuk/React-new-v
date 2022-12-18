@@ -2,10 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 // eslint-disable-next-line react/prop-types
-export const HomeTemplate = ({ people }) => {
+export const HomeTemplate = () => {
   const { t } = useTranslation();
 
-  console.log('people = ', people);
   return (
     <div>
       <p>{t('helloWorld')}</p>

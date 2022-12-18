@@ -6,7 +6,6 @@ export const fetchStarship = () => async (dispatch) => {
     dispatch(updateIsLoadingStarships(true));
     const response = await fetch('https://swapi.dev/api/starships');
     const data = await response.json();
-    console.log('result = ', data);
 
     dispatch(setStarships(data.results));
     dispatch(updateIsLoadingStarships(false));
