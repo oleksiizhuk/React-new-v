@@ -1,5 +1,5 @@
 import { setPeople, setPeopleError, updateIsLoadingPeople } from '../actions-types/people';
-import { getRandomAPI } from '../../services/getRandomApi/getRandomAPI';
+import { getRandomAPI } from '../../utils/getRandomApi/getRandomAPI';
 
 export const fetchPeople = () => async (dispatch) => {
   try {

@@ -1,5 +1,5 @@
 import { setStarships, updateIsLoadingStarships, setStarshipError } from '../actions-types/starships';
-import { getRandomAPI } from '../../services/getRandomApi/getRandomAPI';
+import { getRandomAPI } from '../../utils/getRandomApi/getRandomAPI';
 
 export const fetchStarship = () => async (dispatch) => {
   try {

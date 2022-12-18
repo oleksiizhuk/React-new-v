@@ -1,5 +1,5 @@
 import { setPlanets, updateIsLoadingPlanets, setPlanetError } from '../actions-types/planets';
-import { getRandomAPI } from '../../services/getRandomApi/getRandomAPI';
+import { getRandomAPI } from '../../utils/getRandomApi/getRandomAPI';
 
 export const fetchPlanet = () => async (dispatch) => {
   try {
