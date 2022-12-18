@@ -6,9 +6,9 @@ export const StarshipTemplate = ({ starships }) => {
     <div className="container">
       <ul className="list-group" />
       {/* eslint-disable-next-line react/prop-types */}
-      {starships ? starships.map((item) => {
+      {starships?.length ? starships.map((item) => {
         return (
-          <li className="list-group-item list-group-flush">
+          <li key={item.name} className="list-group-item list-group-flush">
             {'NAME: '}
             {item.name}
           </li>

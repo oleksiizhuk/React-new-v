@@ -23,6 +23,7 @@ export const SuspenseView = ({
     return (
       <div>
         <p>Error</p>
+        {/* eslint-disable-next-line react/button-has-type */}
         <button type="button" onClick={onTryAgainClick}>Try Again!</button>
       </div>
     );

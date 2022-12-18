@@ -13,3 +13,5 @@ export const selectStarships = createSelector(
   selectStarship,
   ({ starships }) => starships
 );
+
+export const selectStarshipError = createSelector(selectStarship, ({ isError }) => isError);

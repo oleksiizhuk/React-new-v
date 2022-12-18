@@ -1,14 +1,22 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchStarship } from '../../../store/actions/starships';
-import { selectStarships } from '../../../store/selector/starship';
+// eslint-disable-next-line import/named
+import { selectLoading, selectStarshipError, selectStarships } from '../../../store/selector/starship';
 
 export const useStarshipData = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
+  const loadStarship = useCallback(() => {
     dispatch(fetchStarship());
   }, [dispatch]);
+  useEffect(() => {
+    loadStarship();
+  }, [loadStarship]);
 
+  const isLoading = useSelector(selectLoading);
   const starships = useSelector(selectStarships);
-  return { starships };
+  const isError = useSelector(selectStarshipError);
+  return {
+    starships, isLoading, isError, loadStarship 
+  };
 };
