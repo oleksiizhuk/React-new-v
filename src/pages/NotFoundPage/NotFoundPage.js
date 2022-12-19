@@ -10,8 +10,7 @@ export const NotFoundPage = () => {
         <img src={image} alt="sad dog" />
         <p className="display-1 error-text">This page is not Found!</p>
       </div>
-      {/* eslint-disable-next-line react/no-unescaped-entities */}
-      <p className="display-12">We can't seem to find page you are looking for.</p>
+      <p className="display-12">We can not seem to find page you are looking for.</p>
       <Link className="display-12 main-link" to="/">Go to main page</Link>
     </div>
   );

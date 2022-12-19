@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
-export const PeopleTemplate = ({ peoples }) => {
+export const PeopleTemplate = ({ people }) => {
   return (
     <div className="container">
       <ul className="list-group" />
-      {/* eslint-disable-next-line react/prop-types */}
-      {peoples ? peoples.map((item) => {
+      {people ? people.map((item) => {
         return (
           <li key={item.name} className="list-group-item list-group-flush">
             {item.name}
@@ -15,4 +14,14 @@ export const PeopleTemplate = ({ peoples }) => {
       }) : null}
     </div>
   );
+};
+
+PeopleTemplate.propTypes = {
+  people: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string
+  }))
+};
+
+PeopleTemplate.defaultProps = {
+  people: null,
 };

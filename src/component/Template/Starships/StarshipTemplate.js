@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 export const StarshipTemplate = ({ starships }) => {
   return (
     <div className="container">
       <ul className="list-group" />
-      {/* eslint-disable-next-line react/prop-types */}
       {starships?.length ? starships.map((item) => {
         return (
           <li key={item.name} className="list-group-item list-group-flush">
@@ -16,4 +15,14 @@ export const StarshipTemplate = ({ starships }) => {
       }) : null}
     </div>
   );
+};
+
+StarshipTemplate.propTypes = {
+  starships: PropTypes.arrayOf(PropTypes.shape({
+    name: null,
+  }))
+};
+
+StarshipTemplate.defaultProps = {
+  starships: null,
 };

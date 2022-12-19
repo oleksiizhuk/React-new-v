@@ -1,17 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Loader } from '../Loader/Loader';
 import styles from './styles.module.scss';
 import './suspenseView.scss';
 import image from './sad.png';
 
 export const SuspenseView = ({
-  // eslint-disable-next-line react/prop-types
   children,
-  // eslint-disable-next-line react/prop-types
   isLoading,
-  // eslint-disable-next-line react/prop-types
   isError,
-  // eslint-disable-next-line react/prop-types
   onTryAgainClick,
 }) => {
   if (isLoading) {
@@ -37,4 +34,16 @@ export const SuspenseView = ({
   return (
     children
   );
+};
+
+SuspenseView.propTypes = {
+  children: PropTypes.node.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool,
+  onTryAgainClick: PropTypes.func,
+};
+
+SuspenseView.defaultProps = {
+  onTryAgainClick: undefined,
+  isError: undefined,
 };
