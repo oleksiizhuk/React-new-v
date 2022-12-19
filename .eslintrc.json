@@ -11,7 +11,7 @@
         "plugin:react-hooks/recommended"
     ],
     "rules": {
-        "no-shadow": "off",
+        "no-unused-vars": "warn",
         "react-hooks/exhaustive-deps": "error",
         "linebreak-style": ["error", "windows"],
         "react/function-component-definition": [
