@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { preparePeopleMass } from '../../../store/transformator/people';
 
 export const PeopleTemplate = ({ people }) => {
   return (
     <div className="container">
+      <p>
+        Average people weight is
+        {preparePeopleMass(people)}
+      </p>
       <ul className="list-group" />
       {people ? people.map((item) => {
         return (

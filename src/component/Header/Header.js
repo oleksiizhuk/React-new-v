@@ -24,6 +24,9 @@ export const Header = () => {
         <li className="custom-li">
           <Link to="about">About Us</Link>
         </li>
+        <li className="custom-li">
+          <Link to="login">Login</Link>
+        </li>
       </ul>
     </div>
   );

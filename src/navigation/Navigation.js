@@ -7,6 +7,7 @@ import { Translate } from '../component/Template/Translate/Translate';
 import { PeoplePage } from '../pages/peoplePage/PeoplePage';
 import { StarshipPage } from '../pages/starshipPage/StarshipPage';
 import { PlanetPage } from '../pages/planetPage/PlanetPage';
+import { LoginPage } from '../pages/loginPage/loginPage';
 
 export const Navigation = () => {
   return (
@@ -19,6 +20,7 @@ export const Navigation = () => {
       <Route path="/people" element={<PeoplePage />} />
       <Route path="/starships" element={<StarshipPage />} />
       <Route path="/planets" element={<PlanetPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };
