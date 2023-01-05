@@ -25,6 +25,9 @@ export const Header = () => {
           <Link to="about">About Us</Link>
         </li>
         <li className="custom-li">
+          <Link to="caesar">Caesars cipher</Link>
+        </li>
+        <li className="custom-li">
           <Link to="login">Login</Link>
         </li>
       </ul>
