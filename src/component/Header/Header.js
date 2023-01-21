@@ -28,6 +28,9 @@ export const Header = () => {
           <Link to="caesar">Caesars cipher</Link>
         </li>
         <li className="custom-li">
+          <Link to="verbs">Irregular verbs</Link>
+        </li>
+        <li className="custom-li">
           <Link to="login">Login</Link>
         </li>
       </ul>

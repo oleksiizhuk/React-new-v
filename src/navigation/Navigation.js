@@ -9,10 +9,11 @@ import { StarshipPage } from '../pages/starshipPage/StarshipPage';
 import { PlanetPage } from '../pages/planetPage/PlanetPage';
 import { LoginPage } from '../pages/loginPage/loginPage';
 import { CaesarsPage } from '../pages/caesarsPage/CaesarsPage';
+import { VerbPage } from '../pages/verbs/VerbPage';
 
 export const Navigation = () => {
   return (
-    
+
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -23,6 +24,7 @@ export const Navigation = () => {
       <Route path="/planets" element={<PlanetPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/caesar" element={<CaesarsPage />} />
+      <Route path="/verbs" element={<VerbPage />} />
     </Routes>
   );
 };
