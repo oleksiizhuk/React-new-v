@@ -5,60 +5,54 @@ import { useValidField } from './hook/useValidField';
 import { Input } from '../../component/Input/Input';
 
 export const LoginPage = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const {
-    isValidFirst,
-    isValidLast,
-    isValid,
-    isInvalidClassName,
-    isValidNames,
-    isValidForm,
-    isInvalidFeedback
+    firstNameError,
+    lastNameError,
+    isErrorFirstName,
+    isErrorLastName,
+    firstName,
+    lastName,
+    onChangeFirstName,
+    onChangeLastName
   } = useValidField();
 
   return (
     <div className="q-flex">
       <div className="login-form">
         <Input
-          onChange={(e) => {
-            setFirstName(e.target.value.trim());
-            isValidFirst(e.target.value);
-            isValid(e.target.value);
-            isInvalidClassName(e.target.value);
-          }}
+          onChange={onChangeFirstName}
           value={firstName}
           placeholder="First Name"
           name="firstName"
           label="First Name"
-          isError={isValidNames}
-          error={isInvalidFeedback}
+          isError={isErrorFirstName}
+          error={firstNameError}
+        />
+        <Input
+          onChange={onChangeLastName}
+          value={lastName}
+          placeholder="Last Name"
+          name="lastName"
+          label="Last Name"
+          isError={isErrorLastName}
+          error={lastNameError}
+        />
+        <Input
+          type="password"
+          onChange={onChangeLastName}
+          value={lastName}
+          placeholder="Last Name"
+          name="lastName"
+          label="Last Name"
+          isError={isErrorLastName}
+          error={lastNameError}
         />
 
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type="text"
-          id="lastName"
-          placeholder="Last Name"
-          className="d-form"
-          value={lastName}
-          onChange={(e) => {
-            setLastName(e.target.value.trim());
-            isValidLast(e.target.value);
-            isValid(e.target.value);
-          }}
-        />
-        <div className="valid-feedback">
-          Looks good!
-        </div>
-        <div className="invalid-feedback">
-          {}
-        </div>
         <label htmlFor="birthDate">Birth Date</label>
         <input
           type="date"
@@ -95,7 +89,7 @@ export const LoginPage = () => {
           value={passwordConfirm}
         />
         <Link to="/register"><span className="display-8">Have an account? Log in</span></Link>
-        <button type="submit" className="btn btn-primary" disabled={isValidNames}><span>Register</span></button>
+        <button type="submit" className="btn btn-primary"><span>Register</span></button>
       </div>
     </div>
   );

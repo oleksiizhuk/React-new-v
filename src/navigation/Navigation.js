@@ -7,7 +7,7 @@ import { Translate } from '../component/Template/Translate/Translate';
 import { PeoplePage } from '../pages/peoplePage/PeoplePage';
 import { StarshipPage } from '../pages/starshipPage/StarshipPage';
 import { PlanetPage } from '../pages/planetPage/PlanetPage';
-import { LoginPage } from '../pages/loginPage/loginPage';
+import { LoginPage } from '../pages/loginPage/LoginPage';
 import { CaesarsPage } from '../pages/caesarsPage/CaesarsPage';
 import { VerbPage } from '../pages/verbs/VerbPage';
 

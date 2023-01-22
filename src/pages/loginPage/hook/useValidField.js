@@ -1,62 +1,61 @@
 import { useState } from 'react';
 
 export const useValidField = () => {
-  const [isDisabledFirst, setIsDisabledFist] = useState(true);
-  const [isDisabledLast, setIsDisabledLast] = useState(true);
-  const [isValidNames, setIsValidNames] = useState(true);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [isErrorFirstName, setIsErrorFirstName] = useState(false);
+  const [isErrorLastName, setIsErrorLastName] = useState(false);
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
 
-  const [isValidForm, setIsValidForm] = useState('form-control');
-  const [isInvalidFeedback, setIsInvalidFeedback] = useState('');
-  
   const isValidString = (value) => {
-    return /^[a-z0-9 ,.'-]+$/i.test(value);
+    return /^[a-z,.'-]+$/i.test(value);
   };
 
-  const isValidFirst = (value) => {
+  const isValidNameFirstName = (value) => {
     if (value && value.length >= 3 && value.length <= 16 && isValidString(value)) {
-      setIsDisabledFist(false);
-      setIsValidForm('form-control is-valid');
-    } else {
-      setIsDisabledFist(true);
-      console.log('Не прошло валидацию');
-      setIsValidForm('form-control is-invalid');
+      return false;
     }
+    return true;
   };
 
-  const isValidLast = (value) => {
-    if (value && value.length >= 3 && value.length <= 16 && isValidString(value)) {
-      setIsDisabledLast(false);
-      console.log('Прошло валидацию');
-    } else {
-      setIsDisabledLast(true);
-      console.log('Не прошло валидацию');
-    }
-  };
-
-  const isValid = () => {
-    if (isDisabledFirst && isDisabledLast) {
-      setIsValidNames(true);
-    } else {
-      setIsValidNames(false);
-    }
-  };
-
-  const isInvalidClassName = (value) => {
+  const onValidateName = (value) => {
     if (value.length === 0) {
-      setIsInvalidFeedback('The name can not be empty');
+      return 'The name can not be empty';
     }
     if (value.length > 0 && value.length <= 2) {
-      setIsInvalidFeedback('The name must contain at least 3 symbols');
+      return 'The name must contain at least 3 symbols';
     }
     if (isValidString(value) && value.length >= 3) {
-      setIsInvalidFeedback('The name must contain only letters and numbers');
+      return 'The name must contain only letters and numbers';
     }
     if (value.length >= 16) {
-      setIsInvalidFeedback('The name can not be longer than 16 symbols');
+      return 'The name can not be longer than 16 symbols';
     }
+    return '';
   };
-  
+
+  const onChangeFirstName = (event) => {
+    setFirstName(event.target.value.trim());
+    setFirstNameError(onValidateName(event.target.value));
+    setIsErrorFirstName(isValidNameFirstName(event.target.value));
+  };
+  const onChangeLastName = (event) => {
+    setLastName(event.target.value.trim());
+    setLastNameError(onValidateName(event.target.value));
+    setIsErrorLastName(isValidNameFirstName(event.target.value));
+  };
+
+  // TODO Password validation
+
   return {
-    isValidFirst, isValidLast, isValid, isInvalidClassName, isValidNames, isValidForm, isInvalidFeedback
+    firstNameError,
+    lastNameError,
+    isErrorFirstName,
+    isErrorLastName,
+    firstName,
+    lastName,
+    onChangeFirstName,
+    onChangeLastName
   };
 };
