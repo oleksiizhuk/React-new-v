@@ -6,9 +6,6 @@ import { Input } from '../../component/Input/Input';
 
 export const LoginPage = () => {
   const [birthDate, setBirthDate] = useState('');
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const {
     firstNameError,
@@ -18,7 +15,19 @@ export const LoginPage = () => {
     firstName,
     lastName,
     onChangeFirstName,
-    onChangeLastName
+    onChangeLastName,
+    isValidPass,
+    isValidConfirmPass,
+    password,
+    passwordConfirm,
+    passwordError,
+    passwordConfirmError,
+    onChangePassword,
+    onChangeConfirmPassword,
+    mail,
+    isValidMail,
+    mailError,
+    onChangeMail,
   } = useValidField();
 
   return (
@@ -42,17 +51,6 @@ export const LoginPage = () => {
           isError={isErrorLastName}
           error={lastNameError}
         />
-        <Input
-          type="password"
-          onChange={onChangeLastName}
-          value={lastName}
-          placeholder="Last Name"
-          name="lastName"
-          label="Last Name"
-          isError={isErrorLastName}
-          error={lastNameError}
-        />
-
         <label htmlFor="birthDate">Birth Date</label>
         <input
           type="date"
@@ -61,32 +59,35 @@ export const LoginPage = () => {
           onChange={(e) => setBirthDate(e.target.value)}
           value={birthDate}
         />
-        <label htmlFor="mail">EMail</label>
-        <input
+        <Input
           type="email"
-          id="mail"
-          placeholder="E-mail"
-          className="d-form"
-          onChange={(e) => setMail(e.target.value)}
+          onChange={onChangeMail}
+          placeholder="Email"
+          label="Email"
           value={mail}
+          isError={isValidMail}
+          error={mailError}
         />
-        <label htmlFor="password">Password</label>
-        <input
+
+        <Input
           type="password"
-          id="password"
-          placeholder="Password"
-          className="d-form"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={onChangePassword}
           value={password}
+          placeholder="Password"
+          name="password"
+          label="Password"
+          isError={isValidPass}
+          error={passwordError}
         />
-        <label htmlFor="passwordConfirm">Confirm password</label>
-        <input
+        <Input
           type="password"
-          id="passwordConfirm"
-          placeholder="Repeat password"
-          className="d-form"
-          onChange={(e) => setPasswordConfirm(e.target.value)}
+          onChange={onChangeConfirmPassword}
           value={passwordConfirm}
+          placeholder="Confirm password"
+          name="passwordConfirm"
+          label="Confirm password"
+          isError={isValidConfirmPass}
+          error={passwordConfirmError}
         />
         <Link to="/register"><span className="display-8">Have an account? Log in</span></Link>
         <button type="submit" className="btn btn-primary"><span>Register</span></button>

@@ -24,9 +24,6 @@ export const Input = ({
         value={value}
         onChange={onChange}
       />
-      {/* <div className="valid-feedback"> */}
-      {/*   Looks good! */}
-      {/* </div> */}
       {error ? (
         <div className="invalid-feedback">
           {error}
