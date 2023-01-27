@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
 import './loginPage.scss';
 import { Link } from 'react-router-dom';
 import { useValidField } from './hook/useValidField';
 import { Input } from '../../component/Input/Input';
 
 export const LoginPage = () => {
-  const [birthDate, setBirthDate] = useState('');
-
   const {
     firstNameError,
     lastNameError,
@@ -28,12 +25,17 @@ export const LoginPage = () => {
     isValidMail,
     mailError,
     onChangeMail,
+    birthDate,
+    onChangeBirthDate,
+    isAdult,
+    dateError,
   } = useValidField();
 
   return (
     <div className="q-flex">
       <div className="login-form">
         <Input
+          type="text"
           onChange={onChangeFirstName}
           value={firstName}
           placeholder="First Name"
@@ -43,6 +45,7 @@ export const LoginPage = () => {
           error={firstNameError}
         />
         <Input
+          type="text"
           onChange={onChangeLastName}
           value={lastName}
           placeholder="Last Name"
@@ -51,13 +54,15 @@ export const LoginPage = () => {
           isError={isErrorLastName}
           error={lastNameError}
         />
-        <label htmlFor="birthDate">Birth Date</label>
-        <input
+        <Input
           type="date"
-          id="birthDate"
-          className="d-form"
-          onChange={(e) => setBirthDate(e.target.value)}
+          onChange={onChangeBirthDate}
+          placeholder="Birth date"
+          name="birthdate"
+          label="Birth date"
           value={birthDate}
+          isError={isAdult}
+          error={dateError}
         />
         <Input
           type="email"

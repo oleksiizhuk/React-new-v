@@ -19,12 +19,33 @@ export const useValidField = () => {
   const [isValidMail, setIsValidMail] = useState(false);
   const [mailError, setMailError] = useState('');
 
-  const isValidEMail = (value) => {
+  const [birthDate, setBirthDate] = useState('');
+  const [isAdult, setIsAdult] = useState(false);
+  const [dateError, setDateError] = useState('');
+
+  const onAdult = (age) => {
+    const now = new Date().getTime();
+    const birth = new Date(age).getTime();
+    const diff = now - birth;
+    return !(diff >= 409968000000);
+  };
+
+  const onDateError = (value) => {
+    return onAdult(value) ? 'You must be at least 13 years to continue' : '';
+  };
+
+  const onChangeBirthDate = (event) => {
+    setBirthDate(event.target.value);
+    setIsAdult(onAdult(event.target.value));
+    setDateError(onDateError(event.target.value));
+  };
+
+  const onValidEMail = (value) => {
     return !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(value));
   };
   
   const mailErrorMessage = (value) => {
-    if (isValidEMail(value)) {
+    if (onValidEMail(value)) {
       return 'Enter proper email';
     }
     return '';
@@ -32,7 +53,7 @@ export const useValidField = () => {
 
   const onChangeMail = (event) => {
     setMail(event.target.value);
-    setIsValidMail(isValidEMail(event.target.value));
+    setIsValidMail(onValidEMail(event.target.value));
     setMailError(mailErrorMessage(event.target.value));
   };
 
@@ -51,8 +72,8 @@ export const useValidField = () => {
       return 'Minimum eight characters, at least one letter, one number and one special character';
     }
     return '';
-  };  
-    
+  };
+
   const onChangePassword = (event) => {
     setPassword(event.target.value);
     setIsValidPass(isValidPassword(event.target.value));
@@ -124,5 +145,9 @@ export const useValidField = () => {
     isValidMail,
     mailError,
     onChangeMail,
+    birthDate,
+    onChangeBirthDate,
+    isAdult,
+    dateError,
   };
 };
