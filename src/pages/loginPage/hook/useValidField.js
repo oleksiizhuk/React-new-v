@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import {
+  isValidPassword, isValidString, isValidBirthday, isValidEMail 
+} from '../../../utils/validator';
 
 export const useValidField = () => {
   const [firstName, setFirstName] = useState('');
@@ -23,29 +26,18 @@ export const useValidField = () => {
   const [isAdult, setIsAdult] = useState(false);
   const [dateError, setDateError] = useState('');
 
-  const onAdult = (age) => {
-    const now = new Date().getTime();
-    const birth = new Date(age).getTime();
-    const diff = now - birth;
-    return !(diff >= 409968000000);
-  };
-
   const onDateError = (value) => {
-    return onAdult(value) ? 'You must be at least 13 years to continue' : '';
+    return isValidBirthday(value) ? 'You must be at least 13 years to continue' : '';
   };
 
   const onChangeBirthDate = (event) => {
     setBirthDate(event.target.value);
-    setIsAdult(onAdult(event.target.value));
+    setIsAdult(isValidBirthday(event.target.value));
     setDateError(onDateError(event.target.value));
   };
 
-  const onValidEMail = (value) => {
-    return !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(value));
-  };
-  
   const mailErrorMessage = (value) => {
-    if (onValidEMail(value)) {
+    if (isValidEMail(value)) {
       return 'Enter proper email';
     }
     return '';
@@ -53,20 +45,14 @@ export const useValidField = () => {
 
   const onChangeMail = (event) => {
     setMail(event.target.value);
-    setIsValidMail(onValidEMail(event.target.value));
+    setIsValidMail(isValidEMail(event.target.value));
     setMailError(mailErrorMessage(event.target.value));
-  };
-
-  const isValidPassword = (value) => {
-    return !(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(value));
   };
 
   const onCheckPassword = (value) => {
     if (value !== password) {
-      console.log(value, password);
       setIsValidConfirmPass(true);
     } else {
-      console.log('COBnaLO');
       setIsValidConfirmPass(false); 
     }
   };
@@ -100,10 +86,6 @@ export const useValidField = () => {
     onCheckPassword(event.target.value);
   };
 
-  const isValidString = (value) => {
-    return /^[a-z,.'-]+$/i.test(value);
-  };
-
   const isValidNameFirstName = (value) => {
     if (value && value.length >= 3 && value.length <= 16 && isValidString(value)) {
       return false;
@@ -129,16 +111,14 @@ export const useValidField = () => {
   };
 
   const onButtonCheck = () => {
-    if (!isErrorFirstName && firstName 
-      && !isErrorLastName && lastName 
-      && !isValidPass && password 
-      && !isValidConfirmPass && passwordConfirm 
-      && !isValidMail && mail 
-      && !isAdult && birthDate) {
-      return true;
-    } 
-    return false;
+    return !!(!isErrorFirstName && firstName
+      && !isErrorLastName && lastName
+      && !isValidPass && password
+      && !isValidConfirmPass && passwordConfirm
+      && !isValidMail && mail
+      && !isAdult && birthDate);
   };
+
   const buttonIsDisabled = onButtonCheck();
 
   const onChangeFirstName = (event) => {
@@ -177,6 +157,6 @@ export const useValidField = () => {
     onChangeBirthDate,
     isAdult,
     dateError,
-    buttonIsDisabled
+    buttonIsDisabled,
   };
 };
