@@ -61,6 +61,16 @@ export const useValidField = () => {
     return !(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(value));
   };
 
+  const onCheckPassword = (value) => {
+    if (value !== password) {
+      console.log(value, password);
+      setIsValidConfirmPass(true);
+    } else {
+      console.log('COBnaLO');
+      setIsValidConfirmPass(false); 
+    }
+  };
+
   const onValidatePassword = (value) => {
     if (value.length === 0) {
       return 'Password can not be empty';
@@ -70,6 +80,9 @@ export const useValidField = () => {
     }
     if (isValidPassword(value)) {
       return 'Minimum eight characters, at least one letter, one number and one special character';
+    }
+    if (value !== password) {
+      return 'Passwords does not match';
     }
     return '';
   };
@@ -84,6 +97,7 @@ export const useValidField = () => {
     setPasswordConfirm(event.target.value);
     setIsValidConfirmPass(isValidPassword(event.target.value));
     setPasswordConfirmError(onValidatePassword(event.target.value));
+    onCheckPassword(event.target.value);
   };
 
   const isValidString = (value) => {
@@ -110,8 +124,22 @@ export const useValidField = () => {
     if (value.length >= 16) {
       return 'The name can not be longer than 16 symbols';
     }
+
     return '';
   };
+
+  const onButtonCheck = () => {
+    if (!isErrorFirstName && firstName 
+      && !isErrorLastName && lastName 
+      && !isValidPass && password 
+      && !isValidConfirmPass && passwordConfirm 
+      && !isValidMail && mail 
+      && !isAdult && birthDate) {
+      return true;
+    } 
+    return false;
+  };
+  const buttonIsDisabled = onButtonCheck();
 
   const onChangeFirstName = (event) => {
     setFirstName(event.target.value.trim());
@@ -149,5 +177,6 @@ export const useValidField = () => {
     onChangeBirthDate,
     isAdult,
     dateError,
+    buttonIsDisabled
   };
 };

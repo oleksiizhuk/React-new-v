@@ -29,6 +29,7 @@ export const LoginPage = () => {
     onChangeBirthDate,
     isAdult,
     dateError,
+    buttonIsDisabled
   } = useValidField();
 
   return (
@@ -95,7 +96,7 @@ export const LoginPage = () => {
           error={passwordConfirmError}
         />
         <Link to="/register"><span className="display-8">Have an account? Log in</span></Link>
-        <button type="submit" className="btn btn-primary"><span>Register</span></button>
+        <button type="submit" className="btn btn-primary" disabled={!buttonIsDisabled}><span>Register</span></button>
       </div>
     </div>
   );
